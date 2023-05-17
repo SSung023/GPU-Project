@@ -1,2 +1,10 @@
-﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  ModelLoading.vcxproj -> C:\Users\hat72\OneDrive\바탕 화면\GPU practice\Week6\x64\Debug\ModelLoading.exe
+﻿  glad.c
+  model_loading.cpp
+C:\GitHub\GPU-Project\GPUProgramming\include\assimp\defs.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\GitHub\GPU-Project\GPUProgramming\include\assimp\matrix3x3.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\GitHub\GPU-Project\GPUProgramming\include\assimp\matrix4x4.h(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\GitHub\GPU-Project\GPUProgramming\include\assimp\matrix3x3.inl(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+C:\GitHub\GPU-Project\GPUProgramming\include\assimp\matrix4x4.inl(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+  LINK : C:\GitHub\GPU-Project\x64\Debug\ModelLoading.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  ModelLoading.vcxproj -> C:\GitHub\GPU-Project\x64\Debug\ModelLoading.exe
