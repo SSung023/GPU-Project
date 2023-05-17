@@ -1,0 +1,2 @@
+﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  ModelLoading.vcxproj -> C:\Users\hat72\OneDrive\바탕 화면\GPU practice\Week6\x64\Debug\ModelLoading.exe
