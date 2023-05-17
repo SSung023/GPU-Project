@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# log
+*.tlog
+*.log
+
+**/Debug/
