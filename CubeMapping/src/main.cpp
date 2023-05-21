@@ -81,10 +81,13 @@ int main()
     Shader skyboxShader("shader/6.1.skybox.vs", "shader/6.1.skybox.fs");
     
     Shader penguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
+    Shader glacierShader("shader/glacier.vs", "shader/glacier.fs");
 
 
     // load Models
     Model penguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
+    Model childModel("resources/objects/penguin/penguin_little/penguin_stand.obj");
+    Model glacierModel("resources/objects/glacier/glacier.obj");
 
     
     // ------------------------------------------------------------------
@@ -224,6 +227,18 @@ int main()
         Pmodel = glm::rotate(Pmodel, ProtAngle, glm::vec3(0.0f, 1.0f, 0.0f));
         penguinShader.setMat4("model", Pmodel);
         penguinModel.Draw(penguinShader);
+
+
+        // draw glacier
+        glacierShader.use();
+        glacierShader.setMat4("projection", projection);
+        glacierShader.setMat4("view", view);
+
+        glm::mat4 Gmodel = glm::mat4(1.0f);
+        Gmodel = glm::translate(Gmodel, glm::vec3(-10.0f, -7.0f, 10.0f));
+        Gmodel = glm::scale(Gmodel, glm::vec3(4.0f, 4.0f, 4.0f));
+        glacierShader.setMat4("model", Gmodel);
+        glacierModel.Draw(glacierShader);
 
         
 
