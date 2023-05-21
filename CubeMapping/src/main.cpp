@@ -220,6 +220,8 @@ int main()
         glm::mat4 Pmodel = glm::mat4(1.0f);
         Pmodel = glm::translate(Pmodel, glm::vec3(-20.0f, -5.0f, 0.0f));
         Pmodel = glm::scale(Pmodel, glm::vec3(1.0f, 1.0f, 1.0f));
+        float ProtAngle = static_cast<float>(90 % 360);
+        Pmodel = glm::rotate(Pmodel, ProtAngle, glm::vec3(0.0f, 1.0f, 0.0f));
         penguinShader.setMat4("model", Pmodel);
         penguinModel.Draw(penguinShader);
 
