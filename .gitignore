@@ -10,6 +10,11 @@
 *.gch
 *.pch
 
+*.ipch
+*.vsidx
+
+*.VC.*
+
 # Fortran module files
 *.mod
 *.smod
