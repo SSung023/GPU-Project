@@ -48,7 +48,7 @@ int main()
 
     // glfw window creation
     // --------------------
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Penguin World", NULL, NULL);
     if (window == NULL)
     {
         std::cout << "Failed to create GLFW window" << std::endl;
@@ -81,19 +81,22 @@ int main()
     Shader skyboxShader("shader/6.1.skybox.vs", "shader/6.1.skybox.fs");
     
     Shader penguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
-    Shader glacierShader("shader/glacier.vs", "shader/glacier.fs");
-
-
-    // load Models
-    Model penguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
-    Model childModel("resources/objects/penguin/penguin_little/penguin_stand.obj");
-    Model glacierModel("resources/objects/glacier/glacier.obj");
+    Shader penguinShader1("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
     Shader littlePenguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
+    Shader littlePenguinShader1("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
+    Shader littlePenguinShader2("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
+
+    Shader glacierShader("shader/glacier.vs", "shader/glacier.fs");
     Shader glacierShader1("shader/glacier.vs", "shader/glacier.fs");
 
+
     // load Models
+    Model glacierModel("resources/objects/glacier/glacier.obj");
+
     Model adultPenguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
+    Model adultPenguinModel1("resources/objects/penguin/penguin_tall/adult_penguin_hi.obj");
     Model littlePenguinModel("resources/objects/penguin/penguin_little/penguin_stand.obj");
+    Model littlePenguinModel1("resources/objects/penguin/penguin_little/penguin_stand.obj");
     Model glacierModel1("resources/objects/glacier/glacier.obj");
 
 
@@ -214,6 +217,7 @@ int main()
         view = glm::mat4(glm::mat3(camera.GetViewMatrix())); // remove translation from the view matrix
         skyboxShader.setMat4("view", view);
         skyboxShader.setMat4("projection", projection);
+
         // skybox cube
         glBindVertexArray(skyboxVAO);
         glActiveTexture(GL_TEXTURE0);
@@ -232,7 +236,7 @@ int main()
         glacierShader.setMat4("model", Gmodel);
         glacierModel.Draw(glacierShader);
 
-
+        // draw glacier1
         glacierShader1.use();
         glacierShader1.setMat4("projection", projection);
         glacierShader1.setMat4("view", view);
@@ -257,19 +261,62 @@ int main()
         adultPenguinModel.Draw(penguinShader);
 
 
+        // draw penguin1(hi)
+        penguinShader1.use();
+        penguinShader1.setMat4("projection", projection);
+        penguinShader1.setMat4("view", view);
+
+        glm::mat4 Pmodel1 = glm::mat4(1.0f);
+        Pmodel1 = glm::translate(Pmodel1, glm::vec3(-20.0f, -5.0f, -9.7f));
+        Pmodel1 = glm::scale(Pmodel1, glm::vec3(1.0f, 1.0f, 1.0f));
+        float ProtAngle1 = static_cast<float>(20 % 360);
+        Pmodel1 = glm::rotate(Pmodel1, ProtAngle1, glm::vec3(0.0f, 1.0f, 0.0f));
+        penguinShader1.setMat4("model", Pmodel1);
+        adultPenguinModel1.Draw(penguinShader1);
+
+        
+
+
         // draw little penguin
         littlePenguinShader.use();
         littlePenguinShader.setMat4("projection", projection);
         littlePenguinShader.setMat4("view", view);
 
         glm::mat4 littlePmodel = glm::mat4(1.0f);
-        littlePmodel = glm::translate(littlePmodel, glm::vec3(-10.0f, -5.0f, 0.0f));
+        littlePmodel = glm::translate(littlePmodel, glm::vec3(-11.0f, -5.0f, 0.0f));
         littlePmodel = glm::scale(littlePmodel, glm::vec3(1.0f, 1.0f, 1.0f));
         float littleProtAngle = static_cast<float>(5 % 360);
         littlePmodel = glm::rotate(littlePmodel, littleProtAngle, glm::vec3(0.0f, 1.0f, 0.0f));
         penguinShader.setMat4("model", littlePmodel);
         littlePenguinModel.Draw(penguinShader);
         
+        // draw little penguin1
+        littlePenguinShader1.use();
+        littlePenguinShader1.setMat4("projection", projection);
+        littlePenguinShader1.setMat4("view", view);
+
+        glm::mat4 littlePmodel1 = glm::mat4(1.0f);
+        littlePmodel1 = glm::translate(littlePmodel1, glm::vec3(-15.0f, -5.0f, -4.0f));
+        littlePmodel1 = glm::scale(littlePmodel1, glm::vec3(1.0f, 1.0f, 1.0f));
+        float littleProtAngle2 = static_cast<float>(20 % 360);
+        littlePmodel1 = glm::rotate(littlePmodel1, littleProtAngle2, glm::vec3(0.0f, 1.0f, 0.0f));
+        penguinShader.setMat4("model", littlePmodel1);
+        littlePenguinModel.Draw(penguinShader);
+
+        // draw little penguin2
+        littlePenguinShader2.use();
+        littlePenguinShader2.setMat4("projection", projection);
+        littlePenguinShader2.setMat4("view", view);
+
+        glm::mat4 littlePmodel2 = glm::mat4(1.0f);
+        littlePmodel2 = glm::translate(littlePmodel2, glm::vec3(-11.0f, -5.0f, -6.0f));
+        littlePmodel2 = glm::scale(littlePmodel2, glm::vec3(1.0f, 1.0f, 1.0f));
+        float littleProtAngle3 = static_cast<float>(0 % 360);
+        littlePmodel2 = glm::rotate(littlePmodel2, littleProtAngle3, glm::vec3(0.0f, 1.0f, 0.0f));
+        penguinShader.setMat4("model", littlePmodel2);
+        littlePenguinModel.Draw(penguinShader);
+
+
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
