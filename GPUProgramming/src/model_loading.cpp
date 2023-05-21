@@ -93,11 +93,10 @@ int main()
 
     // load models
     // -----------
-    //Model ourModel("resources/backpack/backpack.obj");
-    Model ourModel("resources/penguin/adult_penguin.obj");
+    Model ourModel("resources/penguin/penguin_stand.obj");
         
     // draw in wireframe
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
       
     // render loop
     // -----------
