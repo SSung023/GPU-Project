@@ -20,8 +20,8 @@ unsigned int loadTexture(const char* path);
 unsigned int loadCubemap(vector<std::string> faces);
 
 // settings
-const unsigned int SCR_WIDTH = 1920;
-const unsigned int SCR_HEIGHT = 1080;
+const unsigned int SCR_WIDTH = 1280;
+const unsigned int SCR_HEIGHT = 720;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -81,7 +81,6 @@ int main()
     Shader skyboxShader("shader/6.1.skybox.vs", "shader/6.1.skybox.fs");
     
     Shader penguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
-<<<<<<< Updated upstream
     Shader glacierShader("shader/glacier.vs", "shader/glacier.fs");
 
 
@@ -89,18 +88,14 @@ int main()
     Model penguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
     Model childModel("resources/objects/penguin/penguin_little/penguin_stand.obj");
     Model glacierModel("resources/objects/glacier/glacier.obj");
-=======
     Shader littlePenguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
-    Shader glacierShader("shader/glacier.vs", "shader/glacier.fs");
     Shader glacierShader1("shader/glacier.vs", "shader/glacier.fs");
 
     // load Models
     Model adultPenguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
     Model littlePenguinModel("resources/objects/penguin/penguin_little/penguin_stand.obj");
-    Model glacierModel("resources/objects/glacier/glacier.obj");
     Model glacierModel1("resources/objects/glacier/glacier.obj");
 
->>>>>>> Stashed changes
 
     
     // ------------------------------------------------------------------
@@ -261,20 +256,7 @@ int main()
         penguinShader.setMat4("model", Pmodel);
         adultPenguinModel.Draw(penguinShader);
 
-<<<<<<< Updated upstream
 
-        // draw glacier
-        glacierShader.use();
-        glacierShader.setMat4("projection", projection);
-        glacierShader.setMat4("view", view);
-
-        glm::mat4 Gmodel = glm::mat4(1.0f);
-        Gmodel = glm::translate(Gmodel, glm::vec3(-10.0f, -7.0f, 10.0f));
-        Gmodel = glm::scale(Gmodel, glm::vec3(4.0f, 4.0f, 4.0f));
-        glacierShader.setMat4("model", Gmodel);
-        glacierModel.Draw(glacierShader);
-
-=======
         // draw little penguin
         littlePenguinShader.use();
         littlePenguinShader.setMat4("projection", projection);
@@ -287,7 +269,6 @@ int main()
         littlePmodel = glm::rotate(littlePmodel, littleProtAngle, glm::vec3(0.0f, 1.0f, 0.0f));
         penguinShader.setMat4("model", littlePmodel);
         littlePenguinModel.Draw(penguinShader);
->>>>>>> Stashed changes
         
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
