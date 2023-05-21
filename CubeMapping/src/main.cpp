@@ -82,6 +82,10 @@ int main()
     
     Shader penguinShader("shader/10.3.penguin.vs", "shader/10.3.penguin.fs");
 
+
+    // load Models
+    Model penguinModel("resources/objects/penguin/penguin_tall/adult_penguin.obj");
+
     
     // ------------------------------------------------------------------
     // set up vertex data (and buffer(s)) and configure vertex attributes
@@ -158,7 +162,7 @@ int main()
 
     // shader configuration
     // --------------------
-   shader.use();
+    shader.use();
     shader.setInt("skybox", 0);
 
     skyboxShader.use();
@@ -206,6 +210,18 @@ int main()
         glDrawArrays(GL_TRIANGLES, 0, 36);
         glBindVertexArray(0);
         glDepthFunc(GL_LESS); // set depth function back to default
+
+
+        // draw penguin
+        penguinShader.use();
+        penguinShader.setMat4("projection", projection);
+        penguinShader.setMat4("view", view);
+
+        glm::mat4 Pmodel = glm::mat4(1.0f);
+        Pmodel = glm::translate(Pmodel, glm::vec3(-20.0f, -5.0f, 0.0f));
+        Pmodel = glm::scale(Pmodel, glm::vec3(1.0f, 1.0f, 1.0f));
+        penguinShader.setMat4("model", Pmodel);
+        penguinModel.Draw(penguinShader);
 
         
 
